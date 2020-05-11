@@ -83,22 +83,31 @@
     font-weight:bold;
 }
 
-.title{
+.title {
     width: 100%;
-    font-size:{{titleSize}}px;
-    color:{{titleColor}};
-    text-align:center;
-    font-weight:bold;
+    font-size: {{titleSize}}px;
+    color: {{titleColor}};
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.title.top.top-show {
+    display: block;
+}
+
+.title.bottom.bottom-show {
+    display: block;
 }
 
 #count{
-    color:{{valueColor}};
+    color: {{valueColor}};
 }
 
 #divider{
-    color:{{dividerColor}};
+    color: {{dividerColor}};
 }
 
 #goal{
-    color:{{goalColor}};
+    color: {{goalColor}};
 }

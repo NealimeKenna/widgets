@@ -14,17 +14,30 @@
     "label": "Use 'goal' bot counter as goal number?",
     "value": false
   },
+  "titlePosition": {
+    "group": "Title",
+    "type": "dropdown",
+    "label": "Title position",
+    "value": "top-show",
+    "options":{
+      "top-show": "Top",
+      "bottom-show": "Bottom"
+    }
+  },
   "titleText": {
+    "group": "Title",
     "type": "text",
     "label": "Title text",
     "value": "Follower goal:"
   },
   "fontName": {
+    "group": "Title",
     "type": "googleFont",
     "label": "Font name",
     "value": "Montserrat"
   },
   "fontWeight": {
+    "group": "Title",
     "label": "Font Weight",
     "type": "dropdown",
     "value": "400",
@@ -38,11 +51,13 @@
     }
   },
   "titleColor": {
+    "group": "Title",
     "type": "colorpicker",
     "label": "Title font color",
     "value": "rgb(255, 255, 255)"
   },
   "titleSize": {
+    "group": "Title",
     "type": "number",
     "label": "Title font Size",
     "value": 24
@@ -75,6 +90,7 @@
     }
   },
   "displayBar": {
+    "group": "Progress bar",
     "type": "dropdown",
     "label": "Display bar",
     "value": "block",
@@ -84,11 +100,13 @@
     }
   },
   "barHeight": {
+    "group": "Progress bar",
     "type": "text",
     "label": "Bar height (Pixels)",
     "value": "25"
   },
   "progressDirection": {
+    "group": "Progress bar",
     "type": "dropdown",
     "label": "Progress direction",
     "value": "ltr",
@@ -100,10 +118,12 @@
     }
   },
   "progressMask":{
+    "group": "Progress bar",
     "type": "image-input",
     "label": "Progress mask"
   },
   "displayLabels": {
+    "group": "Progress bar",
     "type": "dropdown",
     "label": "Display labels",
     "value": "block",
@@ -113,41 +133,49 @@
     }
   },
   "backgroundColor": {
+    "group": "Progress bar",
     "type": "colorpicker",
     "label": "Background color",
     "value": "rgb(55, 55, 55)"
   },
   "barColor1": {
+    "group": "Progress bar",
     "type": "colorpicker",
     "label": "Bar color",
     "value": "rgb(63, 63, 195)"
   },
   "barColor2": {
+    "group": "Progress bar",
     "type": "colorpicker",
     "label": "Bar color2",
     "value": "rgb(85, 33, 195)"
   },
   "divider": {
+    "group": "Progress bar",
     "type": "text",
     "label": "Divider",
     "value": "/"
   },
   "dividerColor": {
+    "group": "Progress bar",
     "type": "colorpicker",
     "label": "Divider font color",
     "value": "rgb(255, 255, 255)"
   },
   "valueColor": {
+    "group": "Progress bar",
     "type": "colorpicker",
     "label": "Current value font color",
     "value": "rgb(255, 255, 255)"
   },
   "goalColor": {
+    "group": "Progress bar",
     "type": "colorpicker",
     "label": "Goal font color",
     "value": "rgb(255, 255, 255)"
   },
   "labelSize": {
+    "group": "Progress bar",
     "type": "number",
     "label": "Label font Size",
     "value": 24
