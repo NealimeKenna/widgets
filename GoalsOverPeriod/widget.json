@@ -83,8 +83,13 @@
       "none": "No"
     }
   },
+  "barHeight": {
+    "type": "text",
+    "label": "Bar height (Pixels)",
+    "value": "25"
+  },
   "progressDirection": {
-    "type":"dropdown",
+    "type": "dropdown",
     "label": "Progress direction",
     "value": "ltr",
     "options": {
@@ -93,6 +98,10 @@
       "btt": "Bottom to top",
       "ttb": "Top to bottom"
     }
+  },
+  "progressMask":{
+    "type": "image-input",
+    "label": "Progress mask"
   },
   "displayLabels": {
     "type": "dropdown",

@@ -41,10 +41,19 @@ window.addEventListener('onWidgetLoad', async function (obj) {
             goal = await getCounterValue(obj.detail.channel.apiToken);
         }
 
-        setGoal();
-        updateBar(count);
+    if (fieldData.progressMask.length > 0) {
+        const mask = `${fieldData.progressMask}`;
+        const meter = $('.meter');
+
+        meter.style({
+            '-webkit-mask-image': 'url(' + mask + ')',
+            'mask-image': 'url(' + mask + ')'
+        });
     }
-);
+
+    setGoal();
+    updateBar(count);
+});
 
 let getCounterValue = apiKey => {
     return new Promise(resolve => {
