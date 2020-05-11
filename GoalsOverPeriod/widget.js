@@ -41,11 +41,10 @@ window.addEventListener('onWidgetLoad', async function (obj) {
             goal = await getCounterValue(obj.detail.channel.apiToken);
         }
 
-    if (fieldData.progressMask.length > 0) {
+    if (fieldData.progressMask && fieldData.progressMask.length > 0) {
         const mask = `${fieldData.progressMask}`;
-        const meter = $('.meter');
 
-        meter.style({
+        $('.meter').css({
             '-webkit-mask-image': 'url(' + mask + ')',
             'mask-image': 'url(' + mask + ')'
         });
