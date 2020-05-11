@@ -2,8 +2,9 @@
     font-family: '{fontName}', sans-serif;
     font-weight: {fontWeight};
 }
+
 .meter {
-    display:{displayBar};
+    display: {displayBar};
     height: 25px;  /* Can be anything */
     position: relative;
     background: {{backgroundColor}};
@@ -12,11 +13,13 @@
     border-radius: 25px;
     padding: 0px;
     box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+    overflow: hidden;
 }
 
 .meter > span {
-    display:{displayBar};
+    display: {displayBar};
     height: 100%;
+    max-height: 100%;
     border-radius: 25px;
     background-color: {{barColor1}};
     background-image: linear-gradient(
@@ -27,9 +30,25 @@
     box-shadow:
     inset 0 2px 9px  rgba(255,255,255,0.3),
     inset 0 -2px 6px rgba(0,0,0,0.4);
-    position: relative;
+    position: absolute;
     overflow: hidden;
 }
+
+.meter > span.rtl {
+    right: 0;
+}
+
+.meter > span.btt {
+    width: 100%;
+    height: 0;
+    bottom: 0;
+}
+
+.meter > span.ttb {
+    width: 100%;
+    height: 0;
+}
+
 .meter > span:after {
     content: "";
     position: absolute;
@@ -57,6 +76,7 @@
     text-align:center;
     font-weight:bold;
 }
+
 .title{
     width: 100%;
     font-size:{{titleSize}}px;
@@ -64,12 +84,15 @@
     text-align:center;
     font-weight:bold;
 }
+
 #count{
     color:{{valueColor}};
 }
+
 #divider{
     color:{{dividerColor}};
 }
+
 #goal{
     color:{{goalColor}};
 }

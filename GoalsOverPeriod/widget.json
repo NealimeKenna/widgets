@@ -83,6 +83,17 @@
       "none": "No"
     }
   },
+  "progressDirection": {
+    "type":"dropdown",
+    "label": "Progress direction",
+    "value": "ltr",
+    "options": {
+      "ltr": "Left to right",
+      "rtl": "Right to left",
+      "btt": "Bottom to top",
+      "ttb": "Top to bottom"
+    }
+  },
   "displayLabels": {
     "type": "dropdown",
     "label": "Display labels",
