@@ -119,8 +119,8 @@
   },
   "progressMask": {
     "group": "Progress bar",
-    "type": "text",
-    "label": "Progress mask (Link to image)",
+    "type": "image-input",
+    "label": "Progress mask",
     "value": ""
   },
   "displayLabels": {
@@ -145,7 +145,7 @@
   },
   "fillImage": {
     "group": "Progress bar",
-    "type": "text",
+    "type": "image-input",
     "label": "Fill image",
     "value": ""
   },
