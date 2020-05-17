@@ -20,9 +20,34 @@
     "label": "Title position",
     "value": "top-show",
     "options":{
-      "top-show": "Top",
-      "bottom-show": "Bottom"
+      "top-show": "Above",
+      "bottom-show": "Below",
+      "on-top": "On top"
     }
+  },
+  "titleOnTopLeft": {
+    "group": "Title",
+    "type": "text",
+    "label": "On top, left offset (px)",
+    "value":""
+  },
+  "titleOnTopRight": {
+    "group": "Title",
+    "type": "text",
+    "label": "On top, right offset (px)",
+    "value":""
+  },
+  "titleOnTopTop": {
+    "group": "Title",
+    "type": "text",
+    "label": "On top, top offset (px)",
+    "value":""
+  },
+  "titleOnTopBottom": {
+    "group": "Title",
+    "type": "text",
+    "label": "On top, bottom offset (px)",
+    "value":""
   },
   "titleText": {
     "group": "Title",

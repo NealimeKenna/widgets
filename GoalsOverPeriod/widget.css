@@ -120,6 +120,15 @@
     display: block;
 }
 
+.title.top.on-top {
+    display: block;
+    position: absolute;
+    left: {{titleOnTopLeft}}px;
+    right: {{titleOnTopRight}}px;
+    top: {{titleOnTopTop}}px;
+    bottom: {{titleOnTopBottom}}px;
+}
+
 #count{
     color: {{valueColor}};
 }
