@@ -127,6 +127,7 @@
     right: {{titleOnTopRight}}px;
     top: {{titleOnTopTop}}px;
     bottom: {{titleOnTopBottom}}px;
+    z-index: 999;
 }
 
 #count{
