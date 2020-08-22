@@ -125,7 +125,7 @@
     position: absolute;
     right: {{HorizontalOffset}}%;
     top: {{VerticalOffset}}%;
-    transform: translate(-50%);
+    transform: translateY(-50%);
     z-index: 999;
 }
 
