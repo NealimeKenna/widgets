@@ -25,28 +25,16 @@
       "on-top": "On top"
     }
   },
-  "titleOnTopLeft": {
+  "HorizontalOffsett": {
     "group": "Title",
     "type": "text",
-    "label": "On top, left offset (px)",
+    "label": "Horizontal Offset (50 = middle)",
     "value":""
   },
-  "titleOnTopRight": {
+  "VerticalOffset": {
     "group": "Title",
     "type": "text",
-    "label": "On top, right offset (px)",
-    "value":""
-  },
-  "titleOnTopTop": {
-    "group": "Title",
-    "type": "text",
-    "label": "On top, top offset (px)",
-    "value":""
-  },
-  "titleOnTopBottom": {
-    "group": "Title",
-    "type": "text",
-    "label": "On top, bottom offset (px)",
+    "label": "Vertical offset (50 = middle)",
     "value":""
   },
   "titleText": {
