@@ -27,8 +27,6 @@ window.addEventListener('onWidgetLoad', async function (obj) {
         index = fieldData['eventType'];
     }
 
-    count = getCount(obj);
-
     if (fieldData['botCounter']) {
         goal = await getCounterValue(obj.detail.channel.apiToken);
     }
@@ -43,7 +41,7 @@ window.addEventListener('onWidgetLoad', async function (obj) {
     }
 
     setGoal();
-    updateBar(count);
+    updateBar(getCount(obj));
 });
 
 let getCounterValue = apiKey => {
@@ -121,8 +119,10 @@ function updateBar(count) {
 }
 
 function getCount(obj) {
+    const data = obj["detail"]["session"]['data'];
+    let count = 0;
+
     if (fieldData['eventType'] === 'monetary') {
-        const data = obj["detail"]["session"]['data'];
         let cheer = 0;
         let subscriber = 0;
         let tip = 0;
@@ -140,11 +140,11 @@ function getCount(obj) {
         }
 
         count = (cheer * 0.01) + (subscriber * 1.60) + tip;
-    } else if (typeof obj["detail"]["session"][index] !== 'undefined') {
+    } else if (typeof data[index] !== 'undefined') {
         if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
-            count = obj["detail"]["session"][index]['amount'];
+            count = data[index]['amount'];
         } else {
-            count = obj["detail"]["session"][index]['count'];
+            count = data[index]['count'];
         }
     }
 
