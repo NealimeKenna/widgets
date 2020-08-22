@@ -1,7 +1,7 @@
 let index, goal, fieldData, currency, userLocale, prevCount, timeout;
 
 function setGoal() {
-    if (fieldData['eventType'] === 'tip') {
+    if (fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'monetary') {
         if (goal % 1) {
             $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: currency}));
         } else {
@@ -103,7 +103,7 @@ function updateBar(count) {
 
     bar.css(direction, percentage + "%");
 
-    if (fieldData['eventType'] === 'tip') {
+    if (fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'monetary') {
         if (count % 1) {
             count = count.toLocaleString(userLocale, {style: 'currency', currency: currency})
         } else {
