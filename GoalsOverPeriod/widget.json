@@ -99,7 +99,8 @@
       "subscriber-gifted": "Subscriber gifted (session only)",
       "tip": "Tip amount",
       "cheer": "Bits amount",
-      "subscriber-points": "Subscriber points"
+      "subscriber-points": "Subscriber points",
+      "monetary": "Monetary goal"
     }
   },
   "eventPeriod": {

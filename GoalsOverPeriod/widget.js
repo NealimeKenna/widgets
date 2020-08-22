@@ -17,29 +17,21 @@ function setGoal() {
 }
 
 window.addEventListener('onWidgetLoad', async function (obj) {
-        fieldData = obj.detail.fieldData;
-        goal = fieldData["goal"];
-        userLocale = fieldData["userLocale"];
-        currency = obj["detail"]["currency"]["code"];
-        index = fieldData['eventType'] + "-" + fieldData['eventPeriod'];
+    fieldData = obj.detail.fieldData;
+    goal = fieldData["goal"];
+    userLocale = fieldData["userLocale"];
+    currency = obj["detail"]["currency"]["code"];
+    index = fieldData['eventType'] + "-" + fieldData['eventPeriod'];
 
-        if (fieldData['eventType'] === "subscriber-points") {
-            index = fieldData['eventType'];
-        }
+    if (fieldData['eventType'] === "subscriber-points") {
+        index = fieldData['eventType'];
+    }
 
-        let count = 0;
+    count = getCount(obj);
 
-        if (typeof obj["detail"]["session"]["data"][index] !== 'undefined') {
-            if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
-                count = obj["detail"]["session"]["data"][index]['amount'];
-            } else {
-                count = obj["detail"]["session"]["data"][index]['count'];
-            }
-        }
-
-        if (fieldData['botCounter']) {
-            goal = await getCounterValue(obj.detail.channel.apiToken);
-        }
+    if (fieldData['botCounter']) {
+        goal = await getCounterValue(obj.detail.channel.apiToken);
+    }
 
     if (fieldData.progressMask && fieldData.progressMask.length > 0) {
         const mask = `${fieldData.progressMask}`;
@@ -70,15 +62,7 @@ let getCounterValue = apiKey => {
 };
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    if (typeof obj["detail"]["session"][index] !== 'undefined') {
-        if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
-            count = obj["detail"]["session"][index]['amount'];
-        } else {
-            count = obj["detail"]["session"][index]['count'];
-        }
-    }
-
-    updateBar(count);
+    updateBar(getCount(obj));
 });
 
 window.addEventListener('onEventReceived', function (obj) {
@@ -88,7 +72,7 @@ window.addEventListener('onEventReceived', function (obj) {
     if (listener === 'bot:counter' && data.counter === "goal") {
         goal = data.value;
         setGoal();
-        updateBar(count);
+        updateBar(getCount(obj));
     }
 });
 
@@ -134,4 +118,35 @@ function updateBar(count) {
             $("body").fadeTo("slow", 0);
         }, fieldData.fadeoutAfter * 1000)
     }
+}
+
+function getCount(obj) {
+    if (fieldData['eventType'] === 'monetary') {
+        const data = obj["detail"]["session"]['data'];
+        let cheer = 0;
+        let subscriber = 0;
+        let tip = 0;
+
+        if (typeof data['cheer-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
+            cheer = data['cheer-' + fieldData['eventPeriod']]['amount'];
+        }
+
+        if (typeof data['subscriber-' + fieldData['eventPeriod']]['count'] !== 'undefined') {
+            subscriber = data['subscriber-' + fieldData['eventPeriod']]['count'];
+        }
+
+        if (typeof data['tip-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
+            tip = data['tip-' + fieldData['eventPeriod']]['amount'];
+        }
+
+        count = (cheer * 0.01) + (subscriber * 1.60) + tip;
+    } else if (typeof obj["detail"]["session"][index] !== 'undefined') {
+        if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
+            count = obj["detail"]["session"][index]['amount'];
+        } else {
+            count = obj["detail"]["session"][index]['count'];
+        }
+    }
+
+    return count;
 }
