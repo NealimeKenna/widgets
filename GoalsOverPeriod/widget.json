@@ -43,6 +43,12 @@
     "label": "Title text",
     "value": "Follower goal:"
   },
+  "titleTextIncremental": {
+    "group": "Title",
+    "type": "text",
+    "label": "Title text after first increment",
+    "value": "Next follower goal:"
+  },
   "fontName": {
     "group": "Title",
     "type": "googleFont",

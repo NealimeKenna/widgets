@@ -40,8 +40,10 @@ window.addEventListener('onWidgetLoad', async function (obj) {
         });
     }
 
+    console.log(obj);
+
     setGoal();
-    updateBar(getCount(obj));
+    updateBar(getCount(obj.detail.session.data, false));
 });
 
 let getCounterValue = apiKey => {
@@ -60,33 +62,30 @@ let getCounterValue = apiKey => {
 };
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    updateBar(getCount(obj));
+    updateBar(getCount(obj.detail.event, true));
 });
 
 window.addEventListener('onEventReceived', function (obj) {
-    const listener = obj.detail.listener;
-    const data = obj.detail.event;
-
-    if (listener === 'bot:counter' && data.counter === "goal") {
-        goal = data.value;
-        setGoal();
-        updateBar(getCount(obj));
-    }
+    updateBar(getCount(obj.detail.event, true));
 });
 
 
 function updateBar(count) {
     if (count === prevCount) return;
 
+    prevCount = count;
+
     if (count >= goal && fieldData['autoIncrement'] > 0) {
-        goal += fieldData['autoIncrement'];
+        while (count >= goal) {
+            goal += fieldData['autoIncrement'];
+        }
+
+        $('.title').html(fieldData['titleTextIncremental']);
+
         setGoal();
-        updateBar(count);
-        return;
     }
 
     clearTimeout(timeout);
-    prevCount = count;
 
     $("body").fadeTo("slow", 1);
 
@@ -118,35 +117,55 @@ function updateBar(count) {
     }
 }
 
-function getCount(obj) {
-    const data = obj["detail"]["session"]['data'];
+function getCount(data, update) {
     let count = 0;
+    let cheer = 0;
+    let subscriber = 0;
+    let tip = 0;
 
-    if (fieldData['eventType'] === 'monetary') {
-        let cheer = 0;
-        let subscriber = 0;
-        let tip = 0;
+    if (!update) {
+        if (fieldData['eventType'] === 'monetary') {
+            if (typeof data['cheer-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
+                cheer = data['cheer-' + fieldData['eventPeriod']]['amount'];
+            }
 
-        if (typeof data['cheer-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
-            cheer = data['cheer-' + fieldData['eventPeriod']]['amount'];
+            if (typeof data['subscriber-' + fieldData['eventPeriod']]['count'] !== 'undefined') {
+                subscriber = data['subscriber-' + fieldData['eventPeriod']]['count'];
+            }
+
+            if (typeof data['tip-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
+                tip = data['tip-' + fieldData['eventPeriod']]['amount'];
+            }
+
+            count = convert(cheer, subscriber, tip);
+        } else if (typeof data[index] !== 'undefined') {
+            if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
+                count = data[index]['amount'];
+            } else {
+                count = data[index]['count'];
+            }
+        }
+    } else {
+        let amount = data.event.amount;
+
+        if (data.listener === 'subscriber-goal') {
+            subscriber = amount;
         }
 
-        if (typeof data['subscriber-' + fieldData['eventPeriod']]['count'] !== 'undefined') {
-            subscriber = data['subscriber-' + fieldData['eventPeriod']]['count'];
+        if (data.listener === 'tip-goal') {
+            tip = amount;
         }
 
-        if (typeof data['tip-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
-            tip = data['tip-' + fieldData['eventPeriod']]['amount'];
+        if (data.listener === 'cheer-goal') {
+            cheer = amount;
         }
 
-        count = (cheer * 0.01) + (subscriber * 1.60) + tip;
-    } else if (typeof data[index] !== 'undefined') {
-        if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
-            count = data[index]['amount'];
-        } else {
-            count = data[index]['count'];
-        }
+        count = convert(cheer, subscriber, tip) + prevCount;
     }
 
     return count;
+}
+
+function convert(cheer, subscriber, tip) {
+    return (cheer * 0.01) + (subscriber * 1.60) + tip;
 }
