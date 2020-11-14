@@ -159,6 +159,8 @@ function getCount(data, update) {
         }
 
         count = convert(cheer, subscriber, tip) + prevCount;
+    } else {
+        count = prevCount;
     }
 
     return count;
