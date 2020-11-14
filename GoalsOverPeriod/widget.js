@@ -40,8 +40,6 @@ window.addEventListener('onWidgetLoad', async function (obj) {
         });
     }
 
-    console.log(obj);
-
     setGoal();
     updateBar(getCount(obj.detail.session.data, false));
 });
@@ -145,7 +143,7 @@ function getCount(data, update) {
                 count = data[index]['count'];
             }
         }
-    } else {
+    } else if (typeof data !== 'undefined' && typeof data.event !== 'undefined') {
         let amount = data.event.amount;
 
         if (data.listener === 'subscriber-goal') {
