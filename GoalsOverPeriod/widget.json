@@ -97,6 +97,22 @@
       "monetary": "Monetary goal"
     }
   },
+  "eventType2": {
+    "type": "dropdown",
+    "label": "Pick second event type for vs mode:",
+    "value": "follower",
+    "options": {
+      "follower": "Follower",
+      "subscriber": "Subscriber",
+      "subscriber-new": "Subscriber new (session only)",
+      "subscriber-resub": "Subscriber resub (session only)",
+      "subscriber-gifted": "Subscriber gifted (session only)",
+      "tip": "Tip amount",
+      "cheer": "Bits amount",
+      "subscriber-points": "Subscriber points",
+      "monetary": "Monetary goal"
+    }
+  },
   "eventPeriod": {
     "type": "dropdown",
     "label": "Pick period: (doesn't work with sub points)",
@@ -134,7 +150,8 @@
       "ltr": "Left to right",
       "rtl": "Right to left",
       "btt": "Bottom to top",
-      "ttb": "Top to bottom"
+      "ttb": "Top to bottom",
+      "vs": "Versus"
     }
   },
   "progressMask": {
