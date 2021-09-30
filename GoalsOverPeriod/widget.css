@@ -73,6 +73,10 @@
     overflow: hidden;
 }
 
+.meter > span.vs:after {
+    display: none;
+}
+
 .meter.image > span {
     background-color: transparent;
 }

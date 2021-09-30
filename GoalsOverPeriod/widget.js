@@ -1,4 +1,4 @@
-let index, goal, fieldData, currency, userLocale, prevCount, timeout;
+let index, index2, goal, fieldData, currency, userLocale, prevCount, timeout;
 
 function setGoal() {
     if (fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'monetary') {
@@ -22,6 +22,7 @@ window.addEventListener('onWidgetLoad', async function (obj) {
     userLocale = fieldData["userLocale"];
     currency = obj["detail"]["currency"]["code"];
     index = fieldData['eventType'] + "-" + fieldData['eventPeriod'];
+    index2 = fieldData['eventType2'] + "-" + fieldData['eventPeriod'];
 
     if (fieldData['eventType'] === "subscriber-points") {
         index = fieldData['eventType'];
@@ -41,7 +42,12 @@ window.addEventListener('onWidgetLoad', async function (obj) {
     }
 
     setGoal();
-    updateBar(getCount(obj.detail.session.data, false));
+
+    if (fieldData['progressDirection'] !== 'vs') {
+        updateBar(getCount(obj.detail.event, true, index));
+    } else {
+        updateBar(getCount(obj.detail.event, true, index), getCount(obj.detail.event, true, index2));
+    }
 });
 
 let getCounterValue = apiKey => {
@@ -60,16 +66,26 @@ let getCounterValue = apiKey => {
 };
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    updateBar(getCount(obj.detail.event, true));
+    if (fieldData['progressDirection'] !== 'vs') {
+        updateBar(getCount(obj.detail.event, true, index));
+    } else {
+        updateBar(getCount(obj.detail.event, true, index), getCount(obj.detail.event, true, index2));
+    }
 });
 
 window.addEventListener('onEventReceived', function (obj) {
-    updateBar(getCount(obj.detail.event, true));
+    if (fieldData['progressDirection'] !== 'vs') {
+        updateBar(getCount(obj.detail.event, true, index));
+    } else {
+        updateBar(getCount(obj.detail.event, true, index), getCount(obj.detail.event, true, index2));
+    }
 });
 
 
-function updateBar(count) {
-    if (count === prevCount) return;
+function updateBar(count, count2) {
+    if (count2 === undefined && count === prevCount) {
+        return;
+    }
 
     prevCount = count;
 
@@ -88,12 +104,23 @@ function updateBar(count) {
     $("body").fadeTo("slow", 1);
 
     const bar = $('#bar');
-
-    let percentage = Math.min(100, (count / goal * 100).toPrecision(3));
     let direction = 'width';
+    let percentage;
 
-    if (bar.hasClass('btt') || bar.hasClass('ttb')) {
-        direction = 'height';
+    if (fieldData['progressDirection'] !== 'vs') {
+        percentage = Math.min(100, (count / goal * 100).toPrecision(3));
+
+        if (bar.hasClass('btt') || bar.hasClass('ttb')) {
+            direction = 'height';
+        }
+    } else {
+        const total = count + count2;
+
+        console.log(total, count);
+        console.log(count / total * 100);
+
+        percentage = 100;
+        bar.css("background-image", "linear-gradient(90deg, red 50%, yellow 50%)");
     }
 
     bar.css(direction, percentage + "%");
@@ -115,7 +142,7 @@ function updateBar(count) {
     }
 }
 
-function getCount(data, update) {
+function getCount(data, update, current_index) {
     let count = 0;
     let cheer = 0;
     let subscriber = 0;
@@ -136,11 +163,11 @@ function getCount(data, update) {
             }
 
             count = convert(cheer, subscriber, tip);
-        } else if (typeof data[index] !== 'undefined') {
+        } else if (typeof data[current_index] !== 'undefined') {
             if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
-                count = data[index]['amount'];
+                count = data[current_index]['amount'];
             } else {
-                count = data[index]['count'];
+                count = data[current_index]['count'];
             }
         }
     } else if (typeof data !== 'undefined' && typeof data.event !== 'undefined') {
