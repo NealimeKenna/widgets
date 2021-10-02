@@ -184,6 +184,14 @@ function getCount(data, update, current_index) {
             }
 
             count = convert(cheer, subscriber, tip);
+        } else if (fieldData['progressDirection'] === 'vs') {
+            if (~current_index.indexOf('cheer')) {
+                count = count / 100;
+            }
+
+            if (~current_index.indexOf('subscriber')) {
+                count = count * 5;
+            }
         }
     }
 
