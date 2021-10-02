@@ -1,4 +1,4 @@
-let index, index2, goal, fieldData, currency, userLocale, prevCount, timeout;
+let index, index2, goal, fieldData, currency, userLocale, timeout;
 
 function setGoal() {
     if (fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'monetary') {
@@ -44,9 +44,9 @@ window.addEventListener('onWidgetLoad', async function (obj) {
     setGoal();
 
     if (fieldData['progressDirection'] !== 'vs') {
-        updateBar(getCount(obj.detail.event, true, index));
+        updateBar(getCount(obj.detail.session.data, true, index));
     } else {
-        updateBar(getCount(obj.detail.event, true, index), getCount(obj.detail.event, true, index2));
+        updateBar(getCount(obj.detail.session.data, true, index), getCount(obj.detail.session.data, true, index2));
     }
 });
 
@@ -66,29 +66,17 @@ let getCounterValue = apiKey => {
 };
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    if (fieldData['progressDirection'] !== 'vs') {
-        updateBar(getCount(obj.detail.event, true, index));
-    } else {
-        updateBar(getCount(obj.detail.event, true, index), getCount(obj.detail.event, true, index2));
-    }
-});
+    console.log(obj);
 
-window.addEventListener('onEventReceived', function (obj) {
     if (fieldData['progressDirection'] !== 'vs') {
-        updateBar(getCount(obj.detail.event, true, index));
+        updateBar(getCount(obj.detail.session, true, index));
     } else {
-        updateBar(getCount(obj.detail.event, true, index), getCount(obj.detail.event, true, index2));
+        updateBar(getCount(obj.detail.session, true, index), getCount(obj.detail.session, true, index2));
     }
 });
 
 
 function updateBar(count, count2) {
-    if (count2 === undefined && count === prevCount) {
-        return;
-    }
-
-    prevCount = count;
-
     if (count >= goal && fieldData['autoIncrement'] > 0) {
         while (count >= goal) {
             goal += fieldData['autoIncrement'];
@@ -116,9 +104,6 @@ function updateBar(count, count2) {
     } else {
         const total = count + count2;
 
-        console.log(total, count);
-        console.log(count / total * 100);
-
         percentage = 100;
         bar.css("background-image", "linear-gradient(90deg, red 50%, yellow 50%)");
     }
@@ -133,7 +118,12 @@ function updateBar(count, count2) {
         }
     }
 
-    $("#count").html(count);
+    if (fieldData['progressDirection'] === 'vs') {
+        $("#goal").html(count2);
+        $("#count").html(count);
+    } else {
+        $("#count").html(count);
+    }
 
     if (fieldData.fadeoutAfter) {
         timeout = setTimeout(() => {
@@ -170,24 +160,28 @@ function getCount(data, update, current_index) {
                 count = data[current_index]['count'];
             }
         }
-    } else if (typeof data !== 'undefined' && typeof data.event !== 'undefined') {
-        let amount = data.event.amount;
+    } else if (typeof data !== 'undefined' && typeof data[current_index] !== 'undefined') {
+        let amount = data[current_index].amount;
 
-        if (data.listener === 'subscriber-goal') {
-            subscriber = amount;
+        if (typeof amount === 'undefined') {
+            amount = data[current_index].count;
         }
 
-        if (data.listener === 'tip-goal') {
-            tip = amount;
-        }
+        if (fieldData['eventType'] === 'monetary') {
+            if (~current_index.indexOf('subscriber')) {
+                subscriber = amount;
+            }
 
-        if (data.listener === 'cheer-goal') {
-            cheer = amount;
-        }
+            if (~current_index.indexOf('tip')) {
+                tip = amount;
+            }
 
-        count = convert(cheer, subscriber, tip) + prevCount;
-    } else {
-        count = prevCount;
+            if (~current_index.indexOf('cheer')) {
+                cheer = amount;
+            }
+
+            count = convert(cheer, subscriber, tip);
+        }
     }
 
     return count;
