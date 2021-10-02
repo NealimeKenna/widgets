@@ -66,8 +66,6 @@ let getCounterValue = apiKey => {
 };
 
 window.addEventListener('onSessionUpdate', function (obj) {
-    console.log(obj);
-
     if (fieldData['progressDirection'] !== 'vs') {
         updateBar(getCount(obj.detail.session, true, index));
     } else {
@@ -161,23 +159,23 @@ function getCount(data, update, current_index) {
             }
         }
     } else if (typeof data !== 'undefined' && typeof data[current_index] !== 'undefined') {
-        let amount = data[current_index].amount;
+        count = data[current_index].amount;
 
-        if (typeof amount === 'undefined') {
-            amount = data[current_index].count;
+        if (typeof count === 'undefined') {
+            count = data[current_index].count;
         }
 
         if (fieldData['eventType'] === 'monetary') {
             if (~current_index.indexOf('subscriber')) {
-                subscriber = amount;
+                subscriber = count;
             }
 
             if (~current_index.indexOf('tip')) {
-                tip = amount;
+                tip = count;
             }
 
             if (~current_index.indexOf('cheer')) {
-                cheer = amount;
+                cheer = count;
             }
 
             count = convert(cheer, subscriber, tip);
