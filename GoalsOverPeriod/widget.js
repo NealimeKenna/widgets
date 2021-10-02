@@ -101,9 +101,14 @@ function updateBar(count, count2) {
         }
     } else {
         const total = count + count2;
+        let perc = (count / total) * 100;
+
+        if (count === 0 && count2 === 0) {
+            perc = 50;
+        }
 
         percentage = 100;
-        bar.css("background-image", "linear-gradient(90deg, red 50%, yellow 50%)");
+        bar.css("background-image", "linear-gradient(90deg, red "+perc+"%, yellow "+perc+"%)");
     }
 
     bar.css(direction, percentage + "%");
