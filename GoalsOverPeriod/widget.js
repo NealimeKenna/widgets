@@ -108,7 +108,7 @@ function updateBar(count, count2) {
         }
 
         percentage = 100;
-        bar.css("background-image", "linear-gradient(90deg, red "+perc+"%, yellow "+perc+"%)");
+        bar.css("background-image", "linear-gradient(90deg, "+fieldData['barColor1']+" "+perc+"%, "+fieldData['barColor2']+" "+perc+"%)");
     }
 
     bar.css(direction, percentage + "%");
