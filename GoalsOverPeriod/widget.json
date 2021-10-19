@@ -239,6 +239,11 @@
     "label": "Fadeout after (s) - 0 to disable",
     "value": 0
   },
+  "VSmanualBits": {
+    "type": "number",
+    "label": "Manual amount of bits to add for VS",
+    "value": 0
+  },
   "userLocale": {
     "type": "dropdown",
     "label": "Locale",

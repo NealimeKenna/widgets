@@ -186,7 +186,7 @@ function getCount(data, update, current_index) {
             count = convert(cheer, subscriber, tip);
         } else if (fieldData['progressDirection'] === 'vs') {
             if (~current_index.indexOf('cheer')) {
-                count = count / 100;
+                count = count / 100 + (fieldData['VSmanualBits']);
             }
 
             if (~current_index.indexOf('subscriber')) {
