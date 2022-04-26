@@ -108,7 +108,7 @@ function updateBar(count, count2) {
         }
 
         percentage = 100;
-        bar.css("background-image", "linear-gradient(90deg, "+fieldData['barColor1']+" "+perc+"%, "+fieldData['barColor2']+" "+perc+"%)");
+        bar.css("background-image", "linear-gradient(90deg, " + fieldData['barColor1'] + " " + perc + "%, " + fieldData['barColor2'] + " " + perc + "%)");
     }
 
     bar.css(direction, percentage + "%");
@@ -141,22 +141,22 @@ function getCount(data, update, current_index) {
     let subscriber = 0;
     let tip = 0;
 
-    if (!update) {
-        if (fieldData['eventType'] === 'monetary') {
-            if (typeof data['cheer-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
-                cheer = data['cheer-' + fieldData['eventPeriod']]['amount'];
-            }
+    if (fieldData['eventType'] === 'monetary') {
+        if (typeof data['cheer-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
+            cheer = data['cheer-' + fieldData['eventPeriod']]['amount'];
+        }
 
-            if (typeof data['subscriber-' + fieldData['eventPeriod']]['count'] !== 'undefined') {
-                subscriber = data['subscriber-' + fieldData['eventPeriod']]['count'];
-            }
+        if (typeof data['subscriber-' + fieldData['eventPeriod']]['count'] !== 'undefined') {
+            subscriber = data['subscriber-' + fieldData['eventPeriod']]['count'];
+        }
 
-            if (typeof data['tip-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
-                tip = data['tip-' + fieldData['eventPeriod']]['amount'];
-            }
+        if (typeof data['tip-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
+            tip = data['tip-' + fieldData['eventPeriod']]['amount'];
+        }
 
-            count = convert(cheer, subscriber, tip);
-        } else if (typeof data[current_index] !== 'undefined') {
+        count = convert(cheer, subscriber, tip);
+    } else if (!update) {
+        if (typeof data[current_index] !== 'undefined') {
             if (fieldData['eventPeriod'] === 'goal' || fieldData['eventType'] === 'cheer' || fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'subscriber-points') {
                 count = data[current_index]['amount'];
             } else {
@@ -170,21 +170,7 @@ function getCount(data, update, current_index) {
             count = data[current_index].count;
         }
 
-        if (fieldData['eventType'] === 'monetary') {
-            if (~current_index.indexOf('subscriber')) {
-                subscriber = count;
-            }
-
-            if (~current_index.indexOf('tip')) {
-                tip = count;
-            }
-
-            if (~current_index.indexOf('cheer')) {
-                cheer = count;
-            }
-
-            count = convert(cheer, subscriber, tip);
-        } else if (fieldData['progressDirection'] === 'vs') {
+        if (fieldData['progressDirection'] === 'vs') {
             if (~current_index.indexOf('cheer')) {
                 count = count / 100 + (fieldData['VSmanualBits']);
             }
