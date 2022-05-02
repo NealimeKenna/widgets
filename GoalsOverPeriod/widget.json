@@ -113,6 +113,11 @@
       "monetary": "Monetary goal"
     }
   },
+  "subAmount": {
+    "type": "float",
+    "label": "How much do you get per sub? (Important for monetary tracker)",
+    "value": 1.60
+  },
   "eventPeriod": {
     "type": "dropdown",
     "label": "Pick period: (doesn't work with sub points)",

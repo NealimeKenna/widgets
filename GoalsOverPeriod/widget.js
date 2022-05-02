@@ -146,8 +146,14 @@ function getCount(data, update, current_index) {
             cheer = data['cheer-' + fieldData['eventPeriod']]['amount'];
         }
 
-        if (typeof data['subscriber-' + fieldData['eventPeriod']]['count'] !== 'undefined') {
-            subscriber = data['subscriber-' + fieldData['eventPeriod']]['count'];
+        let parameter = 'count';
+
+        if (fieldData['eventPeriod'] === 'goal') {
+            parameter = 'amount';
+        }
+
+        if (typeof data['subscriber-' + fieldData['eventPeriod']][parameter] !== 'undefined') {
+            subscriber = data['subscriber-' + fieldData['eventPeriod']][parameter];
         }
 
         if (typeof data['tip-' + fieldData['eventPeriod']]['amount'] !== 'undefined') {
@@ -185,5 +191,5 @@ function getCount(data, update, current_index) {
 }
 
 function convert(cheer, subscriber, tip) {
-    return (cheer * 0.01) + (subscriber * 1.60) + tip;
+    return (cheer * 0.01) + (subscriber * fieldData['subAmount']) + tip;
 }
