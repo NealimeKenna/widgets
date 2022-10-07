@@ -193,3 +193,10 @@ function getCount(data, update, current_index) {
 function convert(cheer, subscriber, tip) {
     return (cheer * 0.01) + (subscriber * fieldData['subAmount']) + tip;
 }
+
+// Font styling
+if ('{{customFont}}' && '{{customFontName}}') {
+    $('.main-container').prepend('<style type="text/css"> @import url("{customFont}"); * {  font-family: "{customFontName}", sans-serif; font-weight: {fontWeight}; }  </style>');
+} else {
+    $('.main-container').prepend('<style type="text/css">	* {	font-family: "{fontName}", sans-serif; font-weight: {fontWeight}; } </style>');
+}

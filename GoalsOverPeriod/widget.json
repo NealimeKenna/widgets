@@ -69,6 +69,16 @@
       "900": "Black (900)"
     }
   },
+  "customFont": {
+    "group": "Title",
+    "type": "text",
+    "label": "Custom font url"
+  },
+  "customFontName": {
+    "group": "Title",
+    "type": "text",
+    "label": "Custom font name"
+  },
   "titleColor": {
     "group": "Title",
     "type": "colorpicker",
