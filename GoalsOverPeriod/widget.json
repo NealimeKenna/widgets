@@ -107,6 +107,18 @@
     "type": "checkbox",
     "label": "Use https://cssgradient.io/ to generate a gradient."
   },
+  "titleStrokeSize":{
+    "group": "Title",
+    "type": "number",
+    "label": "Stroke size",
+    "value": 0
+  },
+  "titleStrokeColor":{
+    "group": "Title",
+    "type": "colorpicker",
+    "label": "Stroke color",
+    "value": "#000"
+  },
   "titleSize": {
     "group": "Title",
     "type": "number",
@@ -284,6 +296,18 @@
     "group": "Progress bar",
     "type": "checkbox",
     "label": "Use https://cssgradient.io/ to generate a gradient."
+  },
+  "legendStrokeSize":{
+    "group": "Progress bar",
+    "type": "number",
+    "label": "Stroke size",
+    "value": 0
+  },
+  "legendStrokeColor":{
+    "group": "Progress bar",
+    "type": "colorpicker",
+    "label": "Stroke color",
+    "value": "#000"
   },
   "labelSize": {
     "group": "Progress bar",

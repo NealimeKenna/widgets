@@ -98,6 +98,8 @@
     font-size:{{labelSize}}px;
     text-align:center;
     font-weight:bold;
+    -webkit-text-stroke: {{legendStrokeSize}}px {{legendStrokeColor}};
+    paint-order: stroke fill;
 }
 
 .legend.gradient {
@@ -121,6 +123,8 @@
     text-align: center;
     font-weight: bold;
     display: none;
+    -webkit-text-stroke: {{titleStrokeSize}}px {{titleStrokeColor}};
+    paint-order: stroke fill;
 }
 
 .title.gradient {
