@@ -117,6 +117,12 @@
     display: none;
 }
 
+.title.gradient {
+    {{titleGradient}}
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .title.top.top-show,
 .title.bottom.bottom-show {
     display: block;

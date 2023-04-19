@@ -81,11 +81,26 @@
     "type": "text",
     "label": "Custom font name"
   },
+  "titleColorType": {
+    "group": "Title",
+    "type": "dropdown",
+    "label": "Title color type",
+    "value": "color",
+    "options": {
+      "color": "Color",
+      "gradient": "Gradient"
+    }
+  },
   "titleColor": {
     "group": "Title",
     "type": "colorpicker",
     "label": "Title font color",
     "value": "rgb(255, 255, 255)"
+  },
+  "titleGradient": {
+    "group": "Title",
+    "type": "text",
+    "label": "Title font gradient"
   },
   "titleSize": {
     "group": "Title",
