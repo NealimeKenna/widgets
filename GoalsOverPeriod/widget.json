@@ -22,6 +22,8 @@
     "options":{
       "top-show": "Above",
       "bottom-show": "Below",
+      "left-show": "Left",
+      "right-show": "Right",
       "on-top": "On top"
     }
   },
@@ -179,10 +181,10 @@
     "group": "Progress bar",
     "type": "dropdown",
     "label": "Display labels",
-    "value": "block",
+    "value": "show",
     "options": {
-      "block": "Yes",
-      "none": "No"
+      "show": "Yes",
+      "hide": "No"
     }
   },
   "fillType": {

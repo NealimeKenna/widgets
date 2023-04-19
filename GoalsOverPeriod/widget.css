@@ -94,16 +94,22 @@
     background-position: top center;
 }
 
-.legend{
-    display:{displayLabels};
-    width: 100%;
+.legend {
     font-size:{{labelSize}}px;
     text-align:center;
     font-weight:bold;
 }
 
+.legend.show {
+    display: block;
+}
+
+.legend.show.left-show,
+.legend.show.right-show {
+    display: inline-block;
+}
+
 .title {
-    width: 100%;
     font-size: {{titleSize}}px;
     color: {{titleColor}};
     text-align: center;
@@ -111,12 +117,14 @@
     display: none;
 }
 
-.title.top.top-show {
+.title.top.top-show,
+.title.bottom.bottom-show {
     display: block;
 }
 
-.title.bottom.bottom-show {
-    display: block;
+.title.left.left-show,
+.title.right.right-show {
+    display: inline-block;
 }
 
 .title.top.on-top {
