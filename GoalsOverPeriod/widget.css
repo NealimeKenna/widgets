@@ -100,6 +100,12 @@
     font-weight:bold;
 }
 
+.legend.gradient {
+    {{legendGradient}}
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .legend.show {
     display: block;
 }
