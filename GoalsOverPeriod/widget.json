@@ -1,146 +1,6 @@
 {
-  "goal": {
-    "type": "number",
-    "label": "Goal",
-    "value": 32
-  },
-  "goalSteps": {
-    "type": "string",
-    "label": "Goal steps seperated by ,"
-  },
-  "autoIncrement": {
-    "type": "number",
-    "label": "Auto increment goal when reached by",
-    "value": 0
-  },
-  "botCounter": {
-    "type": "checkbox",
-    "label": "Use 'goal' bot counter as goal number?",
-    "value": false
-  },
-  "titlePosition": {
-    "group": "Title",
-    "type": "dropdown",
-    "label": "Title position",
-    "value": "top-show",
-    "options":{
-      "top-show": "Above goal",
-      "bottom-show": "Below goal",
-      "left-show": "Left of goal",
-      "right-show": "Right of goal",
-      "on-top": "On top bar"
-    }
-  },
-  "titleAlignemnt": {
-    "group": "Title",
-    "type": "dropdown",
-    "label": "Title/goal alignment",
-    "value": "left",
-    "options": {
-      "left": "Left",
-      "center": "Center",
-      "right": "Right"
-    }
-  },
-  "HorizontalOffset": {
-    "group": "Title",
-    "type": "text",
-    "label": "Horizontal Offset (50 = middle)",
-    "value":""
-  },
-  "VerticalOffset": {
-    "group": "Title",
-    "type": "text",
-    "label": "Vertical offset (50 = middle)",
-    "value":""
-  },
-  "titleText": {
-    "group": "Title",
-    "type": "text",
-    "label": "Title text",
-    "value": "Follower goal:"
-  },
-  "titleTextIncremental": {
-    "group": "Title",
-    "type": "text",
-    "label": "Title text after first increment",
-    "value": "Next follower goal:"
-  },
-  "fontName": {
-    "group": "Title",
-    "type": "googleFont",
-    "label": "Font name",
-    "value": "Montserrat"
-  },
-  "fontWeight": {
-    "group": "Title",
-    "label": "Font Weight",
-    "type": "dropdown",
-    "value": "400",
-    "options": {
-      "100": "Thin (100)",
-      "300": "Light (300)",
-      "400": "Regular (400)",
-      "500": "Medium (500)",
-      "700": "Bold (700)",
-      "900": "Black (900)"
-    }
-  },
-  "customFont": {
-    "group": "Title",
-    "type": "text",
-    "label": "Custom font url"
-  },
-  "customFontName": {
-    "group": "Title",
-    "type": "text",
-    "label": "Custom font name"
-  },
-  "titleColorType": {
-    "group": "Title",
-    "type": "dropdown",
-    "label": "Title color type",
-    "value": "color",
-    "options": {
-      "color": "Color",
-      "gradient": "Gradient"
-    }
-  },
-  "titleColor": {
-    "group": "Title",
-    "type": "colorpicker",
-    "label": "Title font color",
-    "value": "rgb(255, 255, 255)"
-  },
-  "titleGradient": {
-    "group": "Title",
-    "type": "text",
-    "label": "Title font gradient"
-  },
-  "titleGradientLegend": {
-    "group": "Title",
-    "type": "checkbox",
-    "label": "Use https://cssgradient.io/ to generate a gradient."
-  },
-  "titleStrokeSize":{
-    "group": "Title",
-    "type": "number",
-    "label": "Stroke size",
-    "value": 0
-  },
-  "titleStrokeColor":{
-    "group": "Title",
-    "type": "colorpicker",
-    "label": "Stroke color",
-    "value": "#000"
-  },
-  "titleSize": {
-    "group": "Title",
-    "type": "number",
-    "label": "Title font Size",
-    "value": 24
-  },
   "eventType": {
+    "group": "Goal settings",
     "type": "dropdown",
     "label": "Pick event type:",
     "value": "follower",
@@ -156,28 +16,8 @@
       "monetary": "Monetary goal"
     }
   },
-  "eventType2": {
-    "type": "dropdown",
-    "label": "Pick second event type for vs mode:",
-    "value": "follower",
-    "options": {
-      "follower": "Follower",
-      "subscriber": "Subscriber",
-      "subscriber-new": "Subscriber new (session only)",
-      "subscriber-resub": "Subscriber resub (session only)",
-      "subscriber-gifted": "Subscriber gifted (session only)",
-      "tip": "Tip amount",
-      "cheer": "Bits amount",
-      "subscriber-points": "Subscriber points",
-      "monetary": "Monetary goal"
-    }
-  },
-  "subAmount": {
-    "type": "float",
-    "label": "How much do you get per sub? (Important for monetary tracker)",
-    "value": 1.60
-  },
   "eventPeriod": {
+    "group": "Goal settings",
     "type": "dropdown",
     "label": "Pick period: (doesn't work with sub points)",
     "value": "session",
@@ -188,6 +28,190 @@
       "total": "Total",
       "goal": "Amount from goal data"
     }
+  },
+  "titleText": {
+    "group": "Goal settings",
+    "type": "text",
+    "label": "Title text",
+    "value": "Follower goal:"
+  },
+  "goal": {
+    "group": "Goal settings",
+    "type": "number",
+    "label": "Goal",
+    "value": 32
+  },
+  "goalSteps": {
+    "group": "Goal settings",
+    "type": "string",
+    "label": "Goal steps seperated by ,"
+  },
+  "autoIncrement": {
+    "group": "Goal settings",
+    "type": "number",
+    "label": "Auto increment goal when reached by",
+    "value": 0
+  },
+  "titleTextIncremental": {
+    "group": "Goal settings",
+    "type": "text",
+    "label": "Title text after first increment",
+    "value": "Next follower goal:"
+  },
+  "fadeoutAfter": {
+    "type": "number",
+    "label": "Fadeout after (s) - 0 to disable",
+    "value": 0
+  },
+  "titlePosition": {
+    "group": "Goal settings",
+    "type": "dropdown",
+    "label": "Title position",
+    "value": "top-show",
+    "options":{
+      "top-show": "Above goal",
+      "bottom-show": "Below goal",
+      "left-show": "Left of goal",
+      "right-show": "Right of goal",
+      "on-top": "On top bar"
+    }
+  },
+  "titleAlignemnt": {
+    "group": "Goal settings",
+    "type": "dropdown",
+    "label": "Title/goal alignment",
+    "value": "left",
+    "options": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right"
+    }
+  },
+  "fontName": {
+    "group": "Text Settings",
+    "type": "googleFont",
+    "label": "Font name",
+    "value": "Montserrat"
+  },
+  "fontWeight": {
+    "group": "Text Settings",
+    "label": "Font Weight",
+    "type": "dropdown",
+    "value": "400",
+    "options": {
+      "100": "Thin (100)",
+      "300": "Light (300)",
+      "400": "Regular (400)",
+      "500": "Medium (500)",
+      "700": "Bold (700)",
+      "900": "Black (900)"
+    }
+  },
+  "customFont": {
+    "group": "Text Settings",
+    "type": "text",
+    "label": "Custom font url"
+  },
+  "customFontName": {
+    "group": "Text Settings",
+    "type": "text",
+    "label": "Custom font name"
+  },
+  "titleSize": {
+    "group": "Text Settings",
+    "type": "number",
+    "label": "Title font Size",
+    "value": 24
+  },
+  "titleColorType": {
+    "group": "Text Settings",
+    "type": "dropdown",
+    "label": "Title color type",
+    "value": "color",
+    "options": {
+      "color": "Color",
+      "gradient": "Gradient"
+    }
+  },
+  "titleColor": {
+    "group": "Text Settings",
+    "type": "colorpicker",
+    "label": "Title font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "titleGradient": {
+    "group": "Text Settings",
+    "type": "text",
+    "label": "Title font gradient"
+  },
+  "titleGradientLegend": {
+    "group": "Text Settings",
+    "type": "checkbox",
+    "label": "Use https://cssgradient.io/ to generate a gradient."
+  },
+  "titleStrokeSize":{
+    "group": "Text Settings",
+    "type": "number",
+    "label": "Stroke size",
+    "value": 0
+  },
+  "titleStrokeColor":{
+    "group": "Text Settings",
+    "type": "colorpicker",
+    "label": "Stroke color",
+    "value": "#000"
+  },
+  "valueColor": {
+    "group": "Progress bar",
+    "type": "colorpicker",
+    "label": "Current value font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "goalColor": {
+    "group": "Progress bar",
+    "type": "colorpicker",
+    "label": "Goal font color",
+    "value": "rgb(255, 255, 255)"
+  },
+  "legendGradient": {
+    "group": "Progress bar",
+    "type": "text",
+    "label": "Gradient color"
+  },
+  "legendGradientLegend": {
+    "group": "Progress bar",
+    "type": "checkbox",
+    "label": "Use https://cssgradient.io/ to generate a gradient."
+  },
+  "legendStrokeSize":{
+    "group": "Progress bar",
+    "type": "number",
+    "label": "Stroke size",
+    "value": 0
+  },
+  "legendStrokeColor":{
+    "group": "Progress bar",
+    "type": "colorpicker",
+    "label": "Stroke color",
+    "value": "#000"
+  },
+  "labelSize": {
+    "group": "Text Settings",
+    "type": "number",
+    "label": "Label font Size",
+    "value": 24
+  },
+  "HorizontalOffset": {
+    "group": "Text Settings",
+    "type": "text",
+    "label": "Horizontal Offset (50 = middle)",
+    "value":""
+  },
+  "VerticalOffset": {
+    "group": "Text Settings",
+    "type": "text",
+    "label": "Vertical offset (50 = middle)",
+    "value":""
   },
   "displayBar": {
     "group": "Progress bar",
@@ -204,6 +228,46 @@
     "type": "text",
     "label": "Bar height (Pixels)",
     "value": "25"
+  },
+  "backgroundColor": {
+    "group": "Progress bar",
+    "type": "colorpicker",
+    "label": "Background color",
+    "value": "rgb(55, 55, 55)"
+  },
+  "barColor1": {
+    "group": "Progress bar",
+    "type": "colorpicker",
+    "label": "Bar color",
+    "value": "rgb(63, 63, 195)"
+  },
+  "barColor2": {
+    "group": "Progress bar",
+    "type": "colorpicker",
+    "label": "Bar color2",
+    "value": "rgb(85, 33, 195)"
+  },
+  "divider": {
+    "group": "Progress bar",
+    "type": "text",
+    "label": "Divider",
+    "value": "/"
+  },
+  "legendColorType": {
+    "group": "Progress bar",
+    "type": "dropdown",
+    "label": "Divider, value and goal color type",
+    "value": "color",
+    "options": {
+      "color": "Color",
+      "gradient": "Gradient"
+    }
+  },
+  "dividerColor": {
+    "group": "Progress bar",
+    "type": "colorpicker",
+    "label": "Divider font color",
+    "value": "rgb(255, 255, 255)"
   },
   "progressDirection": {
     "group": "Progress bar",
@@ -250,97 +314,43 @@
     "label": "Fill image",
     "value": ""
   },
-  "backgroundColor": {
-    "group": "Progress bar",
-    "type": "colorpicker",
-    "label": "Background color",
-    "value": "rgb(55, 55, 55)"
+  "subAmount": {
+    "group": "Vs & Monetary Settings",
+    "type": "float",
+    "label": "How much do you get per sub? (Important for monetary tracker)",
+    "value": 1.60
   },
-  "barColor1": {
-    "group": "Progress bar",
-    "type": "colorpicker",
-    "label": "Bar color",
-    "value": "rgb(63, 63, 195)"
-  },
-  "barColor2": {
-    "group": "Progress bar",
-    "type": "colorpicker",
-    "label": "Bar color2",
-    "value": "rgb(85, 33, 195)"
-  },
-  "divider": {
-    "group": "Progress bar",
-    "type": "text",
-    "label": "Divider",
-    "value": "/"
-  },
-  "legendColorType": {
-    "group": "Progress bar",
+  "eventType2": {
+    "group": "Vs & Monetary Settings",
     "type": "dropdown",
-    "label": "Divider, value and goal color type",
-    "value": "color",
+    "label": "Pick second event type for vs mode:",
+    "value": "follower",
     "options": {
-      "color": "Color",
-      "gradient": "Gradient"
+      "follower": "Follower",
+      "subscriber": "Subscriber",
+      "subscriber-new": "Subscriber new (session only)",
+      "subscriber-resub": "Subscriber resub (session only)",
+      "subscriber-gifted": "Subscriber gifted (session only)",
+      "tip": "Tip amount",
+      "cheer": "Bits amount",
+      "subscriber-points": "Subscriber points",
+      "monetary": "Monetary goal"
     }
   },
-  "dividerColor": {
-    "group": "Progress bar",
-    "type": "colorpicker",
-    "label": "Divider font color",
-    "value": "rgb(255, 255, 255)"
-  },
-  "valueColor": {
-    "group": "Progress bar",
-    "type": "colorpicker",
-    "label": "Current value font color",
-    "value": "rgb(255, 255, 255)"
-  },
-  "goalColor": {
-    "group": "Progress bar",
-    "type": "colorpicker",
-    "label": "Goal font color",
-    "value": "rgb(255, 255, 255)"
-  },
-  "legendGradient": {
-    "group": "Progress bar",
-    "type": "text",
-    "label": "Gradient color"
-  },
-  "legendGradientLegend": {
-    "group": "Progress bar",
-    "type": "checkbox",
-    "label": "Use https://cssgradient.io/ to generate a gradient."
-  },
-  "legendStrokeSize":{
-    "group": "Progress bar",
-    "type": "number",
-    "label": "Stroke size",
-    "value": 0
-  },
-  "legendStrokeColor":{
-    "group": "Progress bar",
-    "type": "colorpicker",
-    "label": "Stroke color",
-    "value": "#000"
-  },
-  "labelSize": {
-    "group": "Progress bar",
-    "type": "number",
-    "label": "Label font Size",
-    "value": 24
-  },
-  "fadeoutAfter": {
-    "type": "number",
-    "label": "Fadeout after (s) - 0 to disable",
-    "value": 0
-  },
   "VSmanualBits": {
+    "group": "Vs & Monetary Settings",
     "type": "number",
     "label": "Manual amount of bits to add for VS",
     "value": 0
   },
+  "botCounter": {
+    "group": "Other settings",
+    "type": "checkbox",
+    "label": "Use 'goal' bot counter as goal number?",
+    "value": false
+  },
   "userLocale": {
+    "group": "Other settings",
     "type": "dropdown",
     "label": "Locale",
     "value": "en-US",
