@@ -24,14 +24,25 @@
     "label": "Title position",
     "value": "top-show",
     "options":{
-      "top-show": "Above",
-      "bottom-show": "Below",
-      "left-show": "Left",
-      "right-show": "Right",
-      "on-top": "On top"
+      "top-show": "Above goal",
+      "bottom-show": "Below goal",
+      "left-show": "Left of goal",
+      "right-show": "Right of goal",
+      "on-top": "On top bar"
     }
   },
-  "HorizontalOffsett": {
+  "titleAlignemnt": {
+    "group": "Title",
+    "type": "dropdown",
+    "label": "Title/goal alignment",
+    "value": "left",
+    "options": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right"
+    }
+  },
+  "HorizontalOffset": {
     "group": "Title",
     "type": "text",
     "label": "Horizontal Offset (50 = middle)",

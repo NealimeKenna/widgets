@@ -96,7 +96,6 @@
 
 .legend {
     font-size:{{labelSize}}px;
-    text-align:center;
     font-weight:bold;
     -webkit-text-stroke: {{legendStrokeSize}}px {{legendStrokeColor}};
     paint-order: stroke fill;
@@ -120,7 +119,6 @@
 .title {
     font-size: {{titleSize}}px;
     color: {{titleColor}};
-    text-align: center;
     font-weight: bold;
     display: none;
     -webkit-text-stroke: {{titleStrokeSize}}px {{titleStrokeColor}};
@@ -162,4 +160,8 @@
 
 #goal{
     color: {{goalColor}};
+}
+
+.main-container {
+    text-align: {{titleAlignemnt}};
 }
