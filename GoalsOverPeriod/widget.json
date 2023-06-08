@@ -4,6 +4,10 @@
     "label": "Goal",
     "value": 32
   },
+  "goalSteps": {
+    "type": "string",
+    "label": "Goal steps seperated by ,"
+  },
   "autoIncrement": {
     "type": "number",
     "label": "Auto increment goal when reached by",

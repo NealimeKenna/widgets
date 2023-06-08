@@ -75,6 +75,21 @@ window.addEventListener('onSessionUpdate', function (obj) {
 
 
 function updateBar(count, count2) {
+    if (count >= goal && fieldData['goalSteps']) {
+        const steps = fieldData['goalSteps'].split(',');
+
+        $.each(steps, function (index, value) {
+            goal = parseInt(value);
+
+            if (count <= value) {
+                // Break out of the loop
+                return false;
+            }
+        })
+
+        setGoal();
+    }
+
     if (count >= goal && fieldData['autoIncrement'] > 0) {
         while (count >= goal) {
             goal += fieldData['autoIncrement'];
