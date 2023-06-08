@@ -79,9 +79,15 @@ function updateBar(count, count2) {
         const steps = fieldData['goalSteps'].split(',');
 
         $.each(steps, function (index, value) {
-            goal = parseInt(value);
+            const data = value.split(':');
 
-            if (count <= value) {
+            goal = parseInt(data[0]);
+
+            if (data[1]) {
+                $('.title').html(data[1]);
+            }
+
+            if (count <= goal) {
                 // Break out of the loop
                 return false;
             }

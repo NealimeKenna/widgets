@@ -44,7 +44,13 @@
   "goalSteps": {
     "group": "Goal settings",
     "type": "string",
-    "label": "Goal steps seperated by ,"
+    "placeholder": "GOOBER",
+    "label": "Goal steps"
+  },
+  "goalStepsLegend": {
+    "group": "Goal settings",
+    "type": "checkbox",
+    "label": "Steps seperated by ','. Use ':' after the number to add a title"
   },
   "autoIncrement": {
     "group": "Goal settings",
