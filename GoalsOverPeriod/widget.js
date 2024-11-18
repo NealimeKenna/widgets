@@ -1,14 +1,14 @@
 let index, index2, goal, fieldData, currency, userLocale, timeout;
 
-function setGoal() {
+function setGoal() {  
     if (fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'monetary') {
         if (goal % 1) {
-            $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: currency}));
+            $("#goal").html(goal.toLocaleString(userLocale, {style: 'currency', currency: getCurrency()}));
         } else {
             $("#goal").html(goal.toLocaleString(userLocale, {
                 minimumFractionDigits: 0,
                 style: 'currency',
-                currency: currency
+                currency: getCurrency()
             }));
         }
     } else {
@@ -136,9 +136,9 @@ function updateBar(count, count2) {
 
     if (fieldData['eventType'] === 'tip' || fieldData['eventType'] === 'monetary') {
         if (count % 1) {
-            count = count.toLocaleString(userLocale, {style: 'currency', currency: currency})
+            count = count.toLocaleString(userLocale, {style: 'currency', currency: getCurrency()})
         } else {
-            count = count.toLocaleString(userLocale, {minimumFractionDigits: 0, style: 'currency', currency: currency})
+            count = count.toLocaleString(userLocale, {minimumFractionDigits: 0, style: 'currency', currency: getCurrency()})
         }
     }
 
@@ -213,6 +213,14 @@ function getCount(data, update, current_index) {
 
 function convert(cheer, subscriber, tip) {
     return (cheer * 0.01) + (subscriber * fieldData['subAmount']) + tip;
+}
+
+function getCurrency() {  
+  if (fieldData['currency'] !== 'auto') {
+    return fieldData['currency'];
+  }
+  
+  return currency;
 }
 
 // Font styling
