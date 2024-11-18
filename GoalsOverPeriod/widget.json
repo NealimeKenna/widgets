@@ -349,6 +349,18 @@
     "label": "Manual amount of bits to add for VS",
     "value": 0
   },
+  "currency": {
+    "group": "Vs & Monetary Settings",
+    "type": "dropdown",
+    "label": "Currency",
+    "value": "auto",
+    "options": {
+      "auto": "Automatic",
+      "EUR": "Euro",
+      "USD": "US Dollar",
+      "GBP": "British Pounds"
+    }
+  },
   "botCounter": {
     "group": "Other settings",
     "type": "checkbox",
