@@ -208,7 +208,7 @@ function getCount(data, update, current_index) {
         }
     }
 
-    return count;
+    return count + fieldData['goalOffset'];
 }
 
 function convert(cheer, subscriber, tip) {
