@@ -41,6 +41,11 @@
     "label": "Goal",
     "value": 32
   },
+  "goalOffset": {
+    "type": "number",
+    "label": "Goal offset",
+    "value": 0
+  },
   "goalSteps": {
     "group": "Goal settings",
     "type": "string",
